@@ -20,7 +20,7 @@ services:
     command: redis-server --port 6379 --requirepass ${REDIS_PASSWORD}  --appendonly yes
 
   mysql:
-    image: mysql:8 # 指定镜像和版本
+    image: mysql:8.0.34 # 指定镜像和版本
     restart: always # 指定开机重启
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --explicit_defaults_for_timestamp=true --lower_case_table_names=1
     # 端口映射，非必要
@@ -71,13 +71,13 @@ services:
       - 5060:5060/udp
       - ${JT1078_PORT}:${JT1078_PORT}
       - ${JT1078_PORT}:${JT1078_PORT}/udp
-      - 3000:3000
+      - 4000:4000
     volumes:
       - ./config/wvp:/config
       - ${BASE_PATH}/logs/wvp:/opt/wvp/logs # 保存wvp日志
     healthcheck:
       start_period: 15s
-      test: [ "CMD", "curl", "-sS", "http://localhost:3000" ]
+      test: [ "CMD", "curl", "-sS", "http://localhost:4000" ]
       timeout: 10s
       retries: 10
     depends_on:
@@ -95,7 +95,7 @@ services:
     ports:
       - ${STREAM_PORT}:${STREAM_PORT}/udp
       - ${STREAM_PORT}:${STREAM_PORT}/tcp
-      - 3001:3001
+      - 4001:4001
     volumes:
       - ./config/zlm/config.ini:/opt/media/conf/config.ini
       - ${RECORD_PATH}:/media/record:rw # 录像保存目录

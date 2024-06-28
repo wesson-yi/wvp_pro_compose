@@ -14,7 +14,7 @@ COPY settings.xml /usr/share/maven/conf/
 RUN cd /home && \
         git clone "${gitUrl}" -b wvp-28181-2.0 && \
         cd wvp-GB28181-pro &&\
-        # 指定Commit, 避免数据库结构不一致
+        # 指定Commit, 避免数据库结构不一致 => 2024-06-17 1909c7f7 调整参数名称
         git checkout 1909c7f71fc1b0e290678a3efe95b62d0b9df75e
 # 构建前端
 RUN cd /home/wvp-GB28181-pro/web_src && \
@@ -27,9 +27,7 @@ RUN cd /home/wvp-GB28181-pro/web_src && \
 RUN cd /home/wvp-GB28181-pro && \
         mvn clean package -Dmaven.test.skip=true && \
         cp /home/wvp-GB28181-pro/target/*.jar /opt/wvp/ && \
-        cp -r /home/wvp-GB28181-pro/src/main/resources/banner.txt /opt/wvp/config/banner.txt && \
-        cp -r /home/wvp-GB28181-pro/src/main/resources/wvpssl.jks /opt/wvp/config/wvpssl.jks
-
+        cp -r /home/wvp-GB28181-pro/src/main/resources/banner.txt /opt/wvp/config/banner.txt
 
 FROM ubuntu:20.04
 
