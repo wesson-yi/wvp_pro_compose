@@ -1,14 +1,11 @@
 # wvp_pro_compose
+wvp && zlm Docker-compose 部署方案
+Forked by [wvp_pro_compose](https://github.com/SaltFish001/wvp_pro_compose/tree/af0993e13bbaef0b37660e12e7ea19488a02a47d)
 
-## SaltFish Warning
-
-`本仓库仅用于测试和提供一个模板，用于生产环境请慎重考虑！！！！`
-
-[wvp-GB28181-pro](https://github.com/648540858/wvp-GB28181-pro) && [ZLMediaKit](https://github.com/ZLMediaKit/ZLMediaKit) Docker-compose 部署方案
+- [wvp-GB28181-pro](https://github.com/648540858/wvp-GB28181-pro)
+- [ZLMediaKit](https://github.com/ZLMediaKit/ZLMediaKit)
 
 ## 本仓库为独立部署 ZLM 和 WVP
-
-从该版本开始，不在使用 Gitee 镜像，如有需要建议自行复制源并替换相关配置
 
 从该版本开始，部分设置会直接写死，如有修改需要请自行阅读各仓库 wiki
 
@@ -37,7 +34,3 @@ step 4: 执行
 ```shell
   docker-compose build && docker-compose up -d
 ```
-
-step 5: 遇到问题可以在[知识星球](https://t.zsxq.com/0dpu05aPO)找咸鱼(SaltFish)
-
-  <img decoding="async" src="./CopyRight.jpg" width="50%">
